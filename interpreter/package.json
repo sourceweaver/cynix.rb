@@ -1,0 +1,16 @@
+{
+  "name": "interpreter",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "NODE_ENV=production parcel build ./src/main.coffee --no-cache --no-source-maps --no-content-hash --dist-dir ./dist"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "author": "sourceweaver",
+  "devDependencies": {
+    "@parcel/transformer-coffeescript": "^2.7.0",
+    "coffeescript": "^2.7.0",
+    "parcel": "^2.7.0"
+  }
+}
