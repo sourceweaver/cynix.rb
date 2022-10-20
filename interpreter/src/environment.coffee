@@ -3,7 +3,7 @@ class Environment
 
   # define writes to the record
   define: (name, value) ->
-    this.record[name] = value
+    @record[name] = value
     value
 
   # lookup attemps to look up a value by it's key
