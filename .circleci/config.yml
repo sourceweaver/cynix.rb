@@ -5,9 +5,12 @@ jobs:
       - image: node:16.18.0-alpine3.16
     steps:
       - checkout
-      - run: cd interpreter
-      - run: npm ci
-      - run: make test
+      - run: 
+          name: "Run tests"
+          command:
+            cd interpreter
+            npm ci
+            make test
 
 workflows:
   test:
