@@ -11,15 +11,13 @@ jobs:
       - checkout
       - run:
           name: "Install system dependencies"
-          command: apk add --update --no-cache --force-overwrite make
+          command: apk add --update --no-cache --force-overwrite make curl
       - run: 
           name: "Run tests"
           command: |
             cd interpreter
             npm ci
             make ci-test
-      - store_artifacts:
-          path: ./interpreter/coverage
 
 workflows:
   test:
