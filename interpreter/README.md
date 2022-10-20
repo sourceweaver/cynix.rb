@@ -47,6 +47,7 @@ Verbose:
 }
 ```
 
+
 Simplified:
 ``` javascript
 [
