@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: "Install system dependencies"
-          command: apk add --update --no-cache --force-overwrite make curl gpg gpg-agent
+          command: apk add --update --no-cache --force-overwrite make curl gpg gpg-agent gpgv
       - run: 
           name: "Run tests"
           command: |
