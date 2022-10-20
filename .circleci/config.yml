@@ -1,15 +1,4 @@
 version: 2.1
-setup: true
-
-orbs:
-  path-filtering: circleci/path-filtering@0.1.3
-
-parameters:
-  interpreter-modified:
-    type: boolean
-    default: false
-
-
 jobs:
   test-interpreter:
     docker:
@@ -21,16 +10,7 @@ jobs:
       - run: make test
 
 workflows:
-  setup:
+  test:
     jobs:
-      - path-filtering/filter:
-          base-revision: master
-          mapping: |
-            interpreter/.* interpreter-modified true
-          config-path: .circleci/config.yml
-  interpreter:
-    when:
-      or:
-        - << pipeline.parameters.interpreter-modified >>
-    jobs:
-        - test-interpreter
+      - test-interpreter
+
