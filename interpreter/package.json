@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "scripts": {
     "build": "NODE_ENV=production parcel build ./src/main.coffee --no-cache --no-source-maps --no-content-hash --dist-dir ./dist",
-    "test": "npx jest"
+    "test": "npx jest",
+    "test-ci": "npx jest --collect-coverage"
   },
   "engines": {
     "node": ">=16"

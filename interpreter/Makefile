@@ -28,3 +28,7 @@ clean:
 	rm -rf $(BUILD_DIR) || true
 	rm -rf .parcel_cache
 
+
+.PHONY: ci-test
+ci-test:
+	npm run test-ci
