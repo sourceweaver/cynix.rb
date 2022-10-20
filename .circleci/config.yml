@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  codecov: codecov/codecov@3.2.3
-
 jobs:
   test-interpreter:
     docker:
@@ -18,8 +15,6 @@ jobs:
             cd interpreter
             npm ci
             make ci-test
-      - codecov/upload:
-          file: './interpreter/coverage/clover.xml'
 
 workflows:
   test:
