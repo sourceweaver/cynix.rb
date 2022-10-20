@@ -8,8 +8,8 @@ jobs:
     docker:
       - image: node:16.18.0-alpine3.16
     steps:
-      - checkout
-        path: ./interpreter
+      - checkout:
+          path: ./interpreter
       - run:
           name: "Install system dependencies"
           command: apk add --update --no-cache --force-overwrite make curl gpg gpg-agent gpgv
