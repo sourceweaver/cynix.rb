@@ -1,48 +1,27 @@
-<<<<<<< HEAD
-# version: 2.1
-# jobs:
-#   test-interpreter:
-#     docker:
-#       - image: node:16.18.0-alpine3.16
-#     steps:
-#       - checkout
-#       - run:
-#           name: "Install system dependencies"
-#           command: apk add --update --no-cache --force-overwrite make
-#       - run:
-#           name: "Run tests"
-#           command: |
-#             cd interpreter
-#             npm ci
-#             make ci-test
-#       - store_artifacts:
-#           path: ./interpreter/coverage
-
-# workflows:
-#   test:
-#     jobs:
-#       - test-interpreter
-=======
 version: 2.1
 
 jobs:
   test-interpreter:
     docker:
-      - image: node:16.18.0-alpine3.16
+      - image: ruby:3.1.2-alpine3.16
     steps:
       - checkout
       - run:
           name: "Install system dependencies"
-          command: apk add --update --no-cache --force-overwrite make curl gpg gpg-agent gpgv
-      - run: 
-          name: "Run tests"
-          command: |
-            cd interpreter
-            npm ci
-            make ci-test
-
+          command: apk add --update --no-cache --force-overwrite git curl make build-base clang
+      - run:
+          name: "Install application dependencies"
+          working_directory: ~/project/interpreter
+          command: make ci-install-deps
+      - run:
+         name: "Run linters"
+         working_directory: ~/project/interpreter
+         command: make lint
+      - run:
+         name: "Run tests"
+         working_directory: ~/project/interpreter
+         command: make test
 workflows:
   test:
     jobs:
       - test-interpreter
->>>>>>> fcf2d76674e25a8c3b55608227cf24fe48769dd2
