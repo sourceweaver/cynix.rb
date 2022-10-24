@@ -3,15 +3,15 @@ version: 2.1
 jobs:
   test-interpreter:
     docker:
-      # - image: ruby:3.1.2-slim-bullseye
-      - image: ruby:3.1.2-alpine3.16
+      - image: ruby:3.1.2-slim-bullseye
+      # - image: ruby:3.1.2-alpine3.16
     steps:
       - checkout
       - run:
           name: "Install system dependencies"
           command: |
-            # apt-get update && sudo apt-get install -y
-            # apt-get install make curl git -y
+            apt-get update && sudo apt-get install -y
+            apt-get install make curl git -y
       - run:
           name: "Install application dependencies"
           command: |
