@@ -1,26 +1,29 @@
 require_relative 'environment'
 
 class Cynix
-    def initialize(global = Environment.new({"version": '0.1.0'}))
+    def initialize(global = Environment.new)
         @global = global
     end
 
     def evaluate(exp, env = @global)
         case
+        # Literals:
         when number?(exp) then exp
         when string?(exp) then exp[1..-2]
 
-        when addition?(exp) then evaluate(exp[1], env) + evaluate(exp[2], env)
-        when subtraction?(exp) then evaluate(exp[1], env) - evaluate(exp[2], env)
+        # Arithmetic Ops:
+        when addition?(exp)       then evaluate(exp[1], env) + evaluate(exp[2], env)
+        when subtraction?(exp)    then evaluate(exp[1], env) - evaluate(exp[2], env)
         when multiplication?(exp) then evaluate(exp[1], env) * evaluate(exp[2], env)
-        when division?(exp) then evaluate(exp[1], env) / evaluate(exp[2], env)
+        when division?(exp)       then evaluate(exp[1], env) / evaluate(exp[2], env)
 
-        # variables:
-        # let/set/read:
+        # Variables:
+        # let assigns a value to name
         when let?(exp)
             _, name, value = exp
             env.define(name, evaluate(value, env))
 
+        # variable_name reads a value
         when variable_name?(exp) then env.lookup(exp)
 
         else puts 'unimplemented'

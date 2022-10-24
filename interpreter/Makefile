@@ -18,6 +18,14 @@ watch/tests:
 test:
 	bundle exec rspec --format documentation
 
+.PHONY: lint
+lint:
+	bundle exec rubocop
+
+.PHONY: format
+format:
+	bundle exec rubocop --fix-layout
+
 .PHONY: ci-install-deps
 ci-install-deps:
 	bundle config path 'vendor/bundle' --local

@@ -9,10 +9,42 @@
 #
 # See https://docs.rubocop.org/rubocop/configuration
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 3.1
   Exclude:
     - 'vendor/**/*'
     - '.bundle/**/*'
+
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 4
+
+Lint/RaiseException:
+  Enabled: false
+
+Lint/SymbolConversion:
+  Enabled: false
+
+Metrics/AbcSize:
+  AllowedMethods:
+    - evaluate
+
+Metrics/BlockLength:
+  AllowedMethods:
+    - describe
+
+Metrics/CyclomaticComplexity:
+  AllowedMethods:
+    - evaluate
+
+Metrics/MethodLength:
+  AllowedMethods:
+    - evaluate
+
+Metrics/PerceivedComplexity:
+  AllowedMethods:
+    - evaluate
 
 Style/Documentation:
   Enabled: false
@@ -26,17 +58,8 @@ Style/FrozenStringLiteralComment:
 Style/RaiseArgs:
   Enabled: false
 
-Lint/RaiseException:
+Style/QuotedSymbols:
+  EnforcedStyle: single_quotes
+
+Style/WordArray:
   Enabled: false
-
-Layout/IndentationWidth:
-  Enabled: true
-  Width: 4
-
-Metrics/BlockLength:
-  AllowedMethods:
-    - describe
-
-Metrics/AbcSize:
-  AllowedMethods:
-    - evaluate
