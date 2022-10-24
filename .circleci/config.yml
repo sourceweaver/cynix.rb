@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test-interpreter:
     docker:
-      - image: ruby:3.1.2-slim-bullseye
+      # - image: ruby:3.1.2-slim-bullseye
       - image: ruby:3.1.2-alpine3.16
     steps:
       - checkout
