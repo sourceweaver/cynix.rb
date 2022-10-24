@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
+group :test, :development do
+    gem 'rspec', '~> 3.11.0'
+    gem 'rubocop', '~> 1.37.0'
+end
+
 group :development do
     gem 'pry', '~> 0.10'
     gem 'pry-doc', '>= 0.6.0'
-    gem 'rspec', '~> 3.11.0'
-    gem 'rubocop', '~> 1.37.0'
 end
