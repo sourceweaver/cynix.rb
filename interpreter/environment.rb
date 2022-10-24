@@ -11,7 +11,6 @@ class Environment
     def lookup(key)
         raise Exception.new "undefined variable: #{key}" unless @record.key?(key)
 
-        puts @record
         @record[key]
     end
 end
