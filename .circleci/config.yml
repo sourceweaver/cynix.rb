@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: "Install system dependencies"
-          command: apk add --update --no-cache --force-overwrite git curl make
+          command: apk add --update --no-cache --force-overwrite git curl make gmp-dev
       - run:
           name: "Install application dependencies"
           command: |
