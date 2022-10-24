@@ -45,3 +45,12 @@ it 'can read the values of built-in variables', ->
   expect(cyn.eval('true')).toBe(true)
   expect(cyn.eval('false')).toBe(false)
   expect(cyn.eval('VERSION')).toBe('0.1.0')
+
+it 'can create a block', ->
+  expect(cyn.eval(
+    ['begin',
+      ['let', 'x', 20],
+      ['let', 'y', 2],
+      ['+', ['*', 'x', 'y'], 2]
+    ]
+  )).toBe(42)

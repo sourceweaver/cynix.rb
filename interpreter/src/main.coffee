@@ -29,12 +29,27 @@ class Cynix
       when @is_let exp
         [_, name, value] = exp
         env.define(name, @eval(value))
-      when @is_variable_name exp then env.lookup exp
+      when @is_variable_name exp then env.lookup(exp)
 
       ###
-        not implemented
+        block:
+      ###
+      when @is_block exp then @eval_block(exp, env)
+
+      ###
+        not implemented:
       ###
       else throw "unimplemented case #{JSON.stringify(exp)}"
+
+  eval_block: (block, env) ->
+    [tag, ...expressions] = block
+
+    result = null
+    for exp in expressions
+      result = @eval(exp, env)
+
+    result
+
 
 
   is_number: (exp) ->
@@ -62,6 +77,9 @@ class Cynix
   is_variable_name: (exp) ->
     typeof exp == 'string'
     # and /^[a-zA-Z] [a-zA-Z0-9_]*$/.test(exp)
+
+  is_block: (exp) ->
+    exp[0] == 'begin'
 
 
 module.exports = Cynix
