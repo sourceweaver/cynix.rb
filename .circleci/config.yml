@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # version: 2.1
 # jobs:
 #   test-interpreter:
@@ -21,3 +22,27 @@
 #   test:
 #     jobs:
 #       - test-interpreter
+=======
+version: 2.1
+
+jobs:
+  test-interpreter:
+    docker:
+      - image: node:16.18.0-alpine3.16
+    steps:
+      - checkout
+      - run:
+          name: "Install system dependencies"
+          command: apk add --update --no-cache --force-overwrite make curl gpg gpg-agent gpgv
+      - run: 
+          name: "Run tests"
+          command: |
+            cd interpreter
+            npm ci
+            make ci-test
+
+workflows:
+  test:
+    jobs:
+      - test-interpreter
+>>>>>>> fcf2d76674e25a8c3b55608227cf24fe48769dd2
