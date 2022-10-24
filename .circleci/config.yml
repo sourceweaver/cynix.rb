@@ -11,15 +11,15 @@ jobs:
           command: apk add --update --no-cache --force-overwrite git curl make build-base clang
       - run:
           name: "Install application dependencies"
-          working_directory: ~project/interpreter
+          working_directory: ~/project/interpreter
           command: make ci-install-deps
       - run:
          name: "Run linters"
-         working_directory: ~project/interpreter
+         working_directory: ~/project/interpreter
          command: make lint
       - run:
          name: "Run tests"
-         working_directory: ~project/interpreter
+         working_directory: ~/project/interpreter
          command: make test
 workflows:
   test:
