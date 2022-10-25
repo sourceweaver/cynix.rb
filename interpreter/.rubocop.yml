@@ -33,6 +33,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   AllowedMethods:
     - describe
+    - context
 
 Metrics/CyclomaticComplexity:
   AllowedMethods:
@@ -47,6 +48,9 @@ Metrics/PerceivedComplexity:
     - evaluate
 
 Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
   Enabled: false
 
 Style/EmptyCaseCondition:

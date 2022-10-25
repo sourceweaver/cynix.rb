@@ -1,16 +1,34 @@
 class Environment
-    def initialize(record = {})
+    def initialize(record = {}, parent = nil)
         @record = record
+        @parent = parent
     end
 
-    def define(key, value)
-        @record[key] = value
+    # define creates a variable with the given key
+    # and value.
+    def define(name, value)
+        @record[name] = value
+        value
+    end
+
+    # assign finds the variable with the given key
+    # and updates it's value.
+    def assign(name, value)
+        @record[name] = value
         value
     end
 
     def lookup(key)
-        raise Exception.new "undefined variable: #{key}" unless @record.key?(key)
+        resolve(key)
+    end
 
-        @record[key]
+    def resolve(name)
+        if @record.key?(name)
+            return @record[name]
+        elsif @parent.nil?
+            raise Exception.new "undefined variable: #{name}"
+        end
+
+        @parent.lookup(name)
     end
 end
