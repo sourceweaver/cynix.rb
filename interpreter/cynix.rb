@@ -37,7 +37,7 @@ class Cynix
     end
 
     def string?(exp)
-        exp.is_a?(String) and exp[0] == '"' and exp[-1] == '"'
+        exp.is_a?(String) && exp[0] == '"' && exp[-1] == '"'
     end
 
     def addition?(exp)
@@ -62,6 +62,6 @@ class Cynix
 
     def variable_name?(exp)
         accepted_pattern = /^[a-zA-Z][a-zA-Z0-9_]*$/
-        exp.is_a?(String) and exp.match?(accepted_pattern)
+        exp.is_a?(String) && exp.match?(accepted_pattern)
     end
 end
