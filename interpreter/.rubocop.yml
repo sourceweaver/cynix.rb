@@ -62,8 +62,14 @@ Style/FrozenStringLiteralComment:
 Style/RaiseArgs:
   Enabled: false
 
+Style/SingleLineMethods:
+  Enabled: false
+
 Style/QuotedSymbols:
   EnforcedStyle: single_quotes
+
+Style/WhileUntilModifier:
+  Enabled: false
 
 Style/WordArray:
   Enabled: false

@@ -14,7 +14,9 @@ class Environment
     # assign finds the variable with the given key
     # and updates it's value.
     def assign(name, value)
+        # puts "DEBUG -> CMD: SET #{name} to #{value}"
         @record[name] = value
+        # puts "DEBUG -> VAR #{name} has the value #{@record[name]}"
         value
     end
 

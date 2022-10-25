@@ -98,7 +98,7 @@ describe Cynix do
                 exp = [
                     'begin',
                     ['let', 'sample2', 10],
-                    ['begin', ['set', 'sample2', 100]],
+                    ['begin', ['set', 'sample2', 100]]
                 ]
                 expect(@cynix.evaluate(exp)).to eq(100)
             end
@@ -138,6 +138,53 @@ describe Cynix do
                     'result'
                 ]
                 expect(@cynix.evaluate(exp)).to eq(52)
+            end
+        end
+
+        context 'given an if expression' do
+            it 'evaluates the condition and runs the correct branch' do
+                exp = [
+                    'begin',
+                    ['let', 'if_sample1', 10],
+                    ['let', 'if_sample2', 0],
+                    ['if', ['>', 'if_sample1', 10],
+                     ['set', 'if_sample2', 20],
+                     ['set', 'if_sample2', 30]],
+                    'if_sample2'
+                ]
+
+                expect(@cynix.evaluate(exp)).to eq(30)
+            end
+        end
+
+        context 'given a while expression' do
+            it 'runs the while loop until the condition is evaluated to true' do
+                # exp = [
+                #     'begin',
+                #     ['let', 'while_sample_counter', 0],
+                #     ['let', 'while_sample_result', 0],
+                #     ['while', ['<', 'while_sample_counter', 10],
+                #      ## result++
+                #      ## implement ++
+                #      ['begin',
+                #       ['set', 'while_sample_result', ['+', 'while_sample_result', 1]],
+                #       ['set', 'while_sample_counter', ['+', 'while_sample_counter', 1]]
+                #      ],
+                #     ],
+                #      'while_sample_result'
+                #     # 'while_sample_result'
+                # ]
+                exp = [
+                    'begin',
+                    ['let', 'counter', 0],
+                    ['while',
+                     ['<', 'counter', 10],
+                     ['set', 'counter',
+                      ['+', 'counter', 1]]],
+                    'counter'
+                ]
+
+                expect(@cynix.evaluate(exp)).to eq(10)
             end
         end
     end
