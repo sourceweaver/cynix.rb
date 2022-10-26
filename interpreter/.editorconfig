@@ -40,3 +40,6 @@ indent_style = tab
 
 [*.{c,h,cpp,hpp}]
 indent_style = tab
+
+[*.bnf]
+indent_size = 2
