@@ -15,6 +15,7 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - '.bundle/**/*'
+    - 'node_modules/**/*'
 
 Layout/IndentationWidth:
   Enabled: true

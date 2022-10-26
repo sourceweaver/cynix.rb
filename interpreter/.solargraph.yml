@@ -2,10 +2,11 @@
 include:
 - "**/*.rb"
 exclude:
-- spec/**/*
-- test/**/*
-- vendor/**/*
+- "spec/**/*"
+- "test/**/*"
+- "vendor/**/*"
 - ".bundle/**/*"
+- "node_modules/**/*"
 require: []
 domains: []
 reporters:
