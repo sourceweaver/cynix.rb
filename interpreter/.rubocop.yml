@@ -16,6 +16,7 @@ AllCops:
     - 'vendor/**/*'
     - '.bundle/**/*'
     - 'node_modules/**/*'
+    - 'coverage/**/*'
 
 Layout/IndentationWidth:
   Enabled: true

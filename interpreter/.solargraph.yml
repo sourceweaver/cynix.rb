@@ -4,6 +4,7 @@ include:
 exclude:
 - "spec/**/*"
 - "test/**/*"
+- "coverage/**/*"
 - "vendor/**/*"
 - ".bundle/**/*"
 - "node_modules/**/*"

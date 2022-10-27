@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   test-interpreter:
@@ -21,6 +23,7 @@ jobs:
          name: "Run tests"
          working_directory: ~/project/interpreter
          command: make test
+      - coveralls/upload
 workflows:
   test:
     jobs:
