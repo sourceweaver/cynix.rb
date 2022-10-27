@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   test-interpreter:
@@ -10,7 +8,12 @@ jobs:
       - checkout
       - run:
           name: "Install system dependencies"
-          command: apk add --update --no-cache --force-overwrite git curl make build-base clang
+          command: apk add --update --no-cache --force-overwrite git curl make build-base clang sudo
+      - run:
+          name: "Install coveralls dependencies"
+          command: |
+            apk add --update --no-cache --force-overwrite sudo nodejs npm
+            npm install -g coveralls
       - run:
           name: "Install application dependencies"
           working_directory: ~/project/interpreter
@@ -23,7 +26,11 @@ jobs:
          name: "Run tests"
          working_directory: ~/project/interpreter
          command: make test
-      - coveralls/upload
+      - run:
+         name: "Upload coverage"
+         working_directory: ~/project/interpreter/coverage/lcov
+         command: COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN cat ./interpreter.lcov | coveralls
+
 workflows:
   test:
     jobs:
