@@ -12,6 +12,9 @@ jobs:
           name: "Install system dependencies"
           command: apk add --update --no-cache --force-overwrite git curl make build-base clang sudo
       - run:
+          name: "Install coveralls dependencies"
+          command: apk add --update --no-cache --force-overwrite sudo nodejs npm
+      - run:
           name: "Install application dependencies"
           working_directory: ~/project/interpreter
           command: make ci-install-deps
