@@ -10,7 +10,7 @@ jobs:
           name: "Install system dependencies"
           command: apk add --update --no-cache --force-overwrite git curl make build-base clang sudo
       - run:
-          name: "Install coveralls dependencies"
+          name: "Install CI dependencies"
           command: |
             apk add --update --no-cache --force-overwrite sudo nodejs npm
             npm install -g coveralls
