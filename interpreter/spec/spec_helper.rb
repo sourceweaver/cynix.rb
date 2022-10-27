@@ -2,7 +2,8 @@ require_relative '../cynix'
 require_relative '../environment'
 
 require 'simplecov'
-SimpleCov.start
+require 'simplecov-lcov'
 
-require 'simplecov-cobertura'
-SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+SimpleCov.start

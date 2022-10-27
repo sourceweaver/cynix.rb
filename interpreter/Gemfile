@@ -4,7 +4,7 @@ group :test, :development do
     gem 'rspec', '~> 3.11.0'
     gem 'rubocop', '~> 1.37.0'
     gem 'simplecov', require: false
-    gem 'simplecov-cobertura'
+    gem 'simplecov-lcov'
 end
 
 group :development do
