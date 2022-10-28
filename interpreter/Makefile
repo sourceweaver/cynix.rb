@@ -30,3 +30,24 @@ format:
 ci-install-deps:
 	bundle config path 'vendor/bundle' --local
 	bundle install
+
+
+PARSER_GEN_DIR    = parser/parser_generator
+PARSER_GEN_CMD 	  = npx syntax-cli
+PARSER_GEN_TARGET = parser.g
+
+GRAMMAR_FILE   = ../../cynix.bnf
+CLI_FLAGS      =  --grammar $(GRAMMAR_FILE) --mode LALR1 --output $(PARSER_GEN_TARGET)
+
+.PHONY: parser/generate
+parser/generate:
+	cd $(PARSER_GEN_DIR) && $(PARSER_GEN_CMD) $(CLI_FLAGS)
+
+
+PARSER_DIR  = parser
+PARSER_FILE = parser.coffee
+SAMPLE_FILE = ../data/source.cyn
+OUTPUT_FILE = ../data/out.json
+.PHONY: parser/parse
+parser/parse:
+	cd $(PARSER_DIR) && npx coffee $(PARSER_FILE) $(SAMPLE_FILE) $(OUTPUT_FILE)
