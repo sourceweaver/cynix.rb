@@ -1,0 +1,13 @@
+{
+  "name": "interpreter",
+  "version": "0.1.0",
+  "scripts": {
+    "run": "npx coffee parser.coffee"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.7.0"
+  }
+}
