@@ -27,3 +27,6 @@
 ## Environment normalization:
 /vendor/bundle
 /lib/bundler/man/
+
+# Generated parser
+parser.g
